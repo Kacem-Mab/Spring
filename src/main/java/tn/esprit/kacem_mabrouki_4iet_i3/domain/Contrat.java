@@ -4,6 +4,7 @@ import lombok.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity @Table(name = "contrat")
 @Getter @Setter @NoArgsConstructor @AllArgsConstructor
@@ -13,4 +14,8 @@ public class Contrat {
     @Column(nullable = false) private LocalDate dateSignature;
     @Column(nullable = false, precision = 10, scale = 2) private BigDecimal montantTotal;
     @Column(nullable = false) private boolean valide;
+    @OneToOne(mappedBy = "contrat")
+    Reservation reservation;
+    @OneToMany(mappedBy = "contrat",cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
+    List<Paiement> paiements;
 }

@@ -16,4 +16,7 @@ public class Paiement {
     @Column(nullable = false) private LocalDate datePaiement;
     @Enumerated(EnumType.STRING) @Column(nullable = false, length = 20)
     private ModePaiement modePaiement;
+
+    @ManyToOne
+    Contrat contrat;
 }

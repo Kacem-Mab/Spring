@@ -13,4 +13,12 @@ public class Reservation {
     @Column(nullable = false) private LocalDate dateFin;
     @Enumerated(EnumType.STRING) @Column(nullable = false, length = 20)
     private StatuReservation statut;
+    @OneToOne
+    Contrat contrat;
+
+    @ManyToOne
+    Vehicule vehicule;
+
+    @ManyToOne
+    Client client;
 }
